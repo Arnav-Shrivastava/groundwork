@@ -22,7 +22,7 @@ export function BuyerMarketplace() {
 
   const fetchListings = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/marketplace/listings")
+      const res = await fetch("http://localhost:8000/api/marketplace")
       if (res.ok) {
         const data = await res.json()
         setListings(data)
@@ -44,7 +44,7 @@ export function BuyerMarketplace() {
         },
         body: JSON.stringify({
           batch_id: selectedBatch.id,
-          tonnes: parseFloat(purchaseAmount)
+          tonnes_requested: parseFloat(purchaseAmount)
         })
       })
 
