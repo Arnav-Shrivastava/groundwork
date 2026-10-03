@@ -41,3 +41,21 @@
 - **What was verified and how**: Integrated `maplibre-gl` and `terra-draw` along with `terra-draw-maplibre-gl-adapter`. Built `MapCanvas.tsx` to handle drawing polygons on the map and saving to `/api/farms`. Fetching existing farms works and they render as polygons. Successfully compiled frontend via `npm run build` without typescript errors.
 - **What failed or was deferred**: N/A.
 - **Next Step**: Step 8 (Buyer Marketplace & Data Fetching).
+
+## Step 8
+- **Commit Hash**: `0c292bc`
+- **What was verified and how**: Integrated actual data fetching in `BuyerMarketplace.tsx` to pull listings from `/api/marketplace/listings`. Replaced static mock cards with dynamically mapped components that render the fetched real seed data. Implemented purchase flow with `Dialog` component hitting `/api/transactions/checkout` and calculating 15% buffer and 85% net scope 3 retirement logic as per specifications. Handled `sonner` Toaster and built the code successfully via `npm run build`.
+- **What failed or was deferred**: N/A.
+- **Next Step**: Step 9 (E2E Integration Validation).
+
+## Step 9
+- **Commit Hash**: N/A (Requested not to commit)
+- **What was verified and how**: Ran `verify_step9.py` inside the backend container to authenticate as a buyer, fetch listings from `/api/marketplace`, and successfully purchase 100 tonnes, generating a transaction with correct buffer allocation logic (85% net, 15% buffer).
+- **What failed or was deferred**: N/A.
+- **Next Step**: Step 10 (Final Polish).
+
+## Step 10
+- **Commit Hash**: N/A
+- **What was verified and how**: Verified frontend build using `npm run build` locally which exited with code 0.
+- **What failed or was deferred**: Did not re-run Python formatting as they were formatted earlier and no significant Python syntax changes were made in later steps.
+- **Next Step**: Done!
