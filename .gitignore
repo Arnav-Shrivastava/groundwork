@@ -5,17 +5,46 @@ __pycache__/
 .venv/
 venv/
 env/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secrets and environment
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Database dumps and local data
+*.sql
+*.dump
+*.sqlite
+*.sqlite3
+pgdata/
 
 # Node
 node_modules/
 dist/
 dist-ssr/
+build/
 *.local
+*.log
+npm-debug.log*
 
-# IDEs
+# Test output
+playwright-report/
+test-results/
+blob-report/
+.lighthouseci/
+
+# IDEs / OS
 .vscode/
 .idea/
+.DS_Store
+Thumbs.db
 
-# Step 9 Exclusions
+# Never committed by request
 GROUNDWORK_EXPLANATION.md
