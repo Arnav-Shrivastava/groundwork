@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { AggregatorDashboard } from './pages/AggregatorDashboard';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
               <Route path="/" element={<div>Welcome to GroundWork OS</div>} />
               <Route path="/login" element={<div>Login Page</div>} />
               <Route path="/register" element={<div>Register Page</div>} />
-              <Route path="/aggregator/*" element={<div>Aggregator Dashboard</div>} />
+              <Route path="/aggregator/*" element={<AggregatorDashboard />} />
               <Route path="/marketplace/*" element={<div>Buyer Marketplace</div>} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
@@ -24,3 +25,4 @@ function App() {
 }
 
 export default App;
+
