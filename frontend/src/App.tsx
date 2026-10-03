@@ -3,7 +3,7 @@ import { AggregatorDashboard } from './pages/AggregatorDashboard'
 import { BuyerMarketplace } from './pages/BuyerMarketplace'
 import { Login } from './pages/Login'
 import { useAuthStore } from './store/authStore'
-
+import { Toaster } from './components/ui/sonner'
 function ProtectedRoute({ children, allowedRoles }: { children: React.ReactNode, allowedRoles?: string[] }) {
   const token = useAuthStore(state => state.token)
   const user = useAuthStore(state => state.user)
@@ -44,6 +44,7 @@ export default function App() {
           <Route path="/" element={<Navigate to="/login" replace />} />
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </div>
   )
 }

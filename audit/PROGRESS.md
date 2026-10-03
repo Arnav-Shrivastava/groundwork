@@ -35,3 +35,9 @@
 - **What was verified and how**: Implemented `authStore` in Zustand. Built `Login.tsx` with a premium shadcn UI form. Updated `App.tsx` routing for protected endpoints. Validated login by observing CORS issue (port 5174 missing), fixing `main.py` CORS origins, and restarting the backend.
 - **What failed or was deferred**: N/A.
 - **Next Step**: Step 7 (Aggregator Interactive Map).
+
+## Step 7
+- **Commit Hash**: `9bf4381`
+- **What was verified and how**: Integrated `maplibre-gl` and `terra-draw` along with `terra-draw-maplibre-gl-adapter`. Built `MapCanvas.tsx` to handle drawing polygons on the map and saving to `/api/farms`. Fetching existing farms works and they render as polygons. Successfully compiled frontend via `npm run build` without typescript errors.
+- **What failed or was deferred**: N/A.
+- **Next Step**: Step 8 (Buyer Marketplace & Data Fetching).
