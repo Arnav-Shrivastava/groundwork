@@ -15,3 +15,6 @@ pytest
 httpx
 pytest-asyncio
 slowapi
+mypy
+ruff
+black

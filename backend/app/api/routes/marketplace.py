@@ -1,7 +1,7 @@
-from typing import Any, List, Optional
+from typing import Any
+
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
-from sqlalchemy import func
 
 from app.api import deps
 from app.models.credit_batch import CreditBatch, CreditStandard, CreditStatus
@@ -9,16 +9,17 @@ from app.schemas.credit_batch import CreditBatchResponse
 
 router = APIRouter()
 
-@router.get("", response_model=List[CreditBatchResponse])
+
+@router.get("", response_model=list[CreditBatchResponse])
 def get_marketplace(
     db: Session = Depends(deps.get_db),
-    min_vintage: Optional[str] = None,
-    standard: Optional[CreditStandard] = None,
-    co_benefits: Optional[str] = Query(None, description="Comma-separated co-benefits"),
-    scope_3_region: Optional[str] = None,
+    min_vintage: str | None = None,
+    standard: CreditStandard | None = None,
+    co_benefits: str | None = Query(None, description="Comma-separated co-benefits"),
+    scope_3_region: str | None = None,
 ) -> Any:
     query = db.query(CreditBatch).filter(CreditBatch.status == CreditStatus.listed)
-    
+
     if min_vintage:
         query = query.filter(CreditBatch.vintage_year >= min_vintage)
     if standard:
@@ -29,6 +30,6 @@ def get_marketplace(
         query = query.filter(CreditBatch.co_benefits.contains(benefits_list))
     if scope_3_region:
         query = query.filter(CreditBatch.scope_3_region.ilike(f"%{scope_3_region}%"))
-        
+
     batches = query.all()
     return batches

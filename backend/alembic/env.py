@@ -1,7 +1,6 @@
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import engine_from_config, pool
 
 from alembic import context
 
@@ -14,8 +13,9 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-import sys
 import os
+import sys
+
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from app.core.config import settings
 from app.db.base import Base
@@ -71,6 +71,7 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
+
         def include_object(object, name, type_, reflected, compare_to):
             # Only include tables that are defined in our models
             if type_ == "table" and reflected and name not in target_metadata.tables:
@@ -78,7 +79,7 @@ def run_migrations_online() -> None:
             return True
 
         context.configure(
-            connection=connection, 
+            connection=connection,
             target_metadata=target_metadata,
             compare_type=True,
             include_object=include_object,

@@ -1,15 +1,18 @@
+import enum
 import uuid
 from datetime import datetime
-from sqlalchemy import Column, String, DateTime, Enum
+
+from sqlalchemy import Column, DateTime, Enum, String
 from sqlalchemy.dialects.postgresql import UUID
-import enum
 
 from app.db.base_class import Base
+
 
 class UserRole(str, enum.Enum):
     aggregator = "aggregator"
     buyer = "buyer"
     admin = "admin"
+
 
 class User(Base):
     __tablename__ = "users"
