@@ -23,3 +23,15 @@
 - **What was verified and how**: Deleted all legacy frontend code in `src/` (except `App.tsx`, `main.tsx`, and `index.css`). Uninstalled legacy Mapbox dependencies and installed `@tanstack/react-query`, `zustand`, `maplibre-gl`, and `terra-draw`. Updated `App.tsx` to a simple shell. Validated setup by successfully building the React app using `npm run build` with Vite.
 - **What failed or was deferred**: N/A.
 - **Next Step**: Step 5 (Design Tokens & Shell).
+
+## Step 5
+- **Commit Hash**: `4dc983b`
+- **What was verified and how**: Updated `index.css` with a premium dark mode theme. Built `AggregatorDashboard` and `BuyerMarketplace` layout shells with Lucide icons. Ran `browser_subagent` to take screenshots and verified the UI looks extremely premium and matches shadcn/ui quality.
+- **What failed or was deferred**: N/A.
+- **Next Step**: Step 6 (Frontend Auth State).
+
+## Step 6
+- **Commit Hash**: `ffd86af`
+- **What was verified and how**: Implemented `authStore` in Zustand. Built `Login.tsx` with a premium shadcn UI form. Updated `App.tsx` routing for protected endpoints. Validated login by observing CORS issue (port 5174 missing), fixing `main.py` CORS origins, and restarting the backend.
+- **What failed or was deferred**: N/A.
+- **Next Step**: Step 7 (Aggregator Interactive Map).
