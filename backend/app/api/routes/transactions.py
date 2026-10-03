@@ -42,6 +42,11 @@ def checkout(
     if batch.available_tco2e <= 0:
         batch.status = CreditStatus.sold_out
         
+    if batch.delivery_type.value == "issued":
+        payment_status = PaymentStatus.completed
+    else:
+        payment_status = PaymentStatus.partially_paid # 30% upfront
+        
     transaction = Transaction(
         buyer_id=current_user.id,
         batch_id=batch.id,
@@ -49,12 +54,23 @@ def checkout(
         buffer_tonnes=buffer_amount,
         net_tonnes=net_delivered,
         total_price=total_price,
-        payment_status=PaymentStatus.partially_paid, # 30% upfront
-        milestones=calculate_milestones(),
+        payment_status=payment_status,
+        milestones=calculate_milestones(batch.delivery_type.value),
         buffer_pool_allocation=buffer_amount
     )
     
     db.add(transaction)
+    db.flush() # get transaction id
+    
+    from app.models.buffer_ledger import BufferLedger, BufferStatus
+    buffer_entry = BufferLedger(
+        transaction_id=transaction.id,
+        tonnes=buffer_amount,
+        status=BufferStatus.pending,
+        notes="From checkout"
+    )
+    db.add(buffer_entry)
+    
     db.commit()
     db.refresh(transaction)
     

@@ -18,6 +18,10 @@ class CreditStatus(str, enum.Enum):
     sold_out = "sold_out"
     retired = "retired"
 
+class DeliveryType(str, enum.Enum):
+    issued = "issued"
+    forward = "forward"
+
 class CreditBatch(Base):
     __tablename__ = "credit_batches"
 
@@ -25,6 +29,7 @@ class CreditBatch(Base):
     aggregator_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     farm_ids = Column(ARRAY(UUID(as_uuid=True)), nullable=False)
     standard = Column(Enum(CreditStandard), nullable=False)
+    delivery_type = Column(Enum(DeliveryType), default=DeliveryType.issued, nullable=False)
     vintage_year = Column(String, nullable=False)
     
     total_tco2e = Column(Numeric(14, 3), nullable=False)
