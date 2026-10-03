@@ -17,3 +17,9 @@
 - **What was verified and how**: OpenAPI tags updated with beautiful descriptions in `main.py`. Linters (`mypy`, `ruff`, `black`) added to `requirements.txt`. Formatted all code via `ruff check . --fix` and `black .`. Re-verified `/docs` returns 200 OK via `curl`. MyPy setup with explicit package bases via `mypy.ini` and `__init__.py`.
 - **What failed or was deferred**: Mypy reported 1 error due to module shadowing (`app/models/credit_batch` and `app/schemas/credit_batch`). Deferred refactoring schemas vs models folder structure as it works correctly and the scope is strictly to fix egregious type errors.
 - **Next Step**: Step 4 (Frontend Scaffold & Cleanup).
+
+## Step 4
+- **Commit Hash**: `fd3d6ac`
+- **What was verified and how**: Deleted all legacy frontend code in `src/` (except `App.tsx`, `main.tsx`, and `index.css`). Uninstalled legacy Mapbox dependencies and installed `@tanstack/react-query`, `zustand`, `maplibre-gl`, and `terra-draw`. Updated `App.tsx` to a simple shell. Validated setup by successfully building the React app using `npm run build` with Vite.
+- **What failed or was deferred**: N/A.
+- **Next Step**: Step 5 (Design Tokens & Shell).
