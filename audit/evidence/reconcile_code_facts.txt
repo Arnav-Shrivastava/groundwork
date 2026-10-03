@@ -1,0 +1,76 @@
+﻿### docker ps (groundwork)
+groundwork-backend-1 Up 9 minutes (unhealthy)
+groundwork-frontend-1 Created
+groundwork-db-1 Up About an hour (healthy)
+### grep ilike in routes
+### grep stats endpoints
+### docker-compose healthcheck
+14:     healthcheck:
+32:     healthcheck:
+33:       test: ["CMD", "curl", "-f", "http://localhost:8000/api/stats/public"]
+### frontend routes (App.tsx)
+30: <Route path="/login" element={token && user ? <Navigate to={user.role === 'buyer' ? '/marketplace' : '/aggregator'} replace /> : <Login />} />
+32: <Route path="/aggregator" element={
+38: <Route path="/marketplace" element={
+44: <Route path="/" element={<Navigate to="/login" replace />} />
+### frontend/src/components/ui
+avatar.tsx
+badge.tsx
+button.tsx
+card.tsx
+dialog.tsx
+dropdown-menu.tsx
+input.tsx
+label.tsx
+separator.tsx
+sheet.tsx
+sonner.tsx
+### package.json deps missing check
+react-hook-form : ABSENT
+zod : ABSENT
+recharts : ABSENT
+@tanstack/react-table : ABSENT
+@playwright/test : ABSENT
+geist : ABSENT
+@fontsource : ABSENT
+cmdk : ABSENT
+lighthouse : ABSENT
+### secret-like strings in tracked files
+.env.example:6:SECRET_KEY="super_secret_key_change_me_in_production"
+.env.example:7:ACCESS_TOKEN_EXPIRE_MINUTES=10080 # 7 days
+.env.example:12:POSTGRES_PASSWORD="password"
+.env.example:18:VITE_MAPBOX_TOKEN="pk.<MASKED>"
+audit/AUDIT_REPORT.md:79:- **Security:** `SECRET_KEY` in `.env.example` is hardcoded. Passwords (if auth were working) would need standard bcrypt validation. No rate limiting or strict CORS origins are visible in the excerpts. No IDOR checks are present to stop an aggregator from reading another aggregator's farms in `farms.py` (wait, `get_farms` restricts by `current_user.id`, so IDOR is protected there).
+audit/step2_api_transcript.md:7:  "access_token": "<MASKED>",
+audit/step2_api_transcript.md:16:  "access_token": "<MASKED>",
+audit/step2_api_transcript.md:25:  "Authorization": "Bearer <MASKED>"
+backend/app/api/deps.py:30:            settings.SECRET_KEY,
+backend/app/api/routes/auth.py:59:    access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+backend/app/core/config.py:7:    SECRET_KEY: str = "super_secret_key_change_me_in_production"
+backend/app/core/config.py:8:    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days
+backend/app/core/security.py:18:            minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
+backend/app/core/security.py:21:    encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=ALGORITHM)
+docker-compose.yml:29:      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}
+docker-compose.yml:31:      - SECRET_KEY=${SECRET_KEY:-super_secret_key_change_me_in_production}
+docker-compose.yml:46:      - VITE_MAPBOX_TOKEN=${VITE_MAPBOX_TOKEN}
+### grep ilike in backend/app
+C:\Users\arnav\Desktop\Projects\GroundWork\backend\app\api\routes\marketplace.py:32: query = query.filter(CreditBatch.scope_3_region.ilike(f"%{scope_3_region}%"))
+### grep stats|admin|ST_Area|ST_Intersects|ST_DWithin|FRONTEND_ORIGIN in backend/app (empty means absent)
+C:\Users\arnav\Desktop\Projects\GroundWork\backend\app\api\routes\auth.py:29: if user_in.role == UserRole.admin:
+C:\Users\arnav\Desktop\Projects\GroundWork\backend\app\api\routes\auth.py:32: detail="Self-registration as admin is not permitted.",
+C:\Users\arnav\Desktop\Projects\GroundWork\backend\app\api\routes\transactions.py:96: deps.require_role([UserRole.buyer.value, UserRole.admin.value])
+C:\Users\arnav\Desktop\Projects\GroundWork\backend\app\api\routes\transactions.py:99: if current_user.role == UserRole.admin:
+C:\Users\arnav\Desktop\Projects\GroundWork\backend\app\models\user.py:14: admin = "admin"
+C:\Users\arnav\Desktop\Projects\GroundWork\backend\app\main.py:13: "description": "Authentication and authorization for users (aggregators, buyers, and admins). Handles login, registration, and session management.",
+### openapi path list from running container
+GET /api/auth/me
+GET /api/credits
+GET /api/farms
+GET /api/health
+GET /api/marketplace
+GET /api/transactions
+POST /api/auth/login
+POST /api/auth/register
+POST /api/credits
+POST /api/farms
+POST /api/transactions/checkout

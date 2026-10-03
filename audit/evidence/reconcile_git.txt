@@ -1,0 +1,144 @@
+﻿### git status --short
+ M audit/PROGRESS.md
+ M backend/app/db/base.py
+ M frontend/src/pages/BuyerMarketplace.tsx
+?? audit/evidence/
+?? backend/verify_step9.py
+### git fetch origin; git rev-parse HEAD origin/main
+0c292bcfcf9b40ebf6cf4a435e07733a5ccfcb6f
+0c292bcfcf9b40ebf6cf4a435e07733a5ccfcb6f
+### git log origin/main..HEAD
+### git log --oneline --decorate (all)
+0c292bc (HEAD -> main, origin/main) [Step 8] feat: wire buyer marketplace to real API and add purchase flow dialog
+9bf4381 [Step 7] feat: add interactive maplibre and terra-draw map for aggregators
+ffd86af [Step 6] feat: add auth store, routing, and login page
+ad03d17 [Step 6] fix: add port 5174 to CORS origins for frontend
+4dc983b [Step 5] feat: premium shadcn UI design tokens and layout shells
+fd3d6ac [Step 4] refactor: scaffold frontend, add essential deps, empty shell
+5139bc9 [Step 3] docs: update OpenAPI tags, add linters and format code
+14fc6d4 [Step 2] feat: complete API, delivery types, rate limiting, and seed script
+d1b3fc8 [Step 1] fix: backend boot, psycopg driver, alembic migrations
+bd27e46 [Step 8] docs: complete setup instructions and final polish
+f3ab446 [Step 7] feat: sleek buyer marketplace UI, filter sidebar, and checkout modal
+3cef3ea [Step 6] feat: modern aggregator dashboard with mapbox integration
+6ed73b2 [Step 5] feat: react foundation, tailwind setup, and shadcn ui components
+e09e69f [Step 4] feat: marketplace search and escrow transaction endpoints
+2bfc5b2 [Step 3] feat: aggregator OS endpoints and geospatial processing
+7bb882b [Step 2] feat: fastAPI core, JWT auth, and db config
+672f885 [Step 1] feat: init project and postgis db models
+### git ls-files (tracked)
+.env.example
+.gitignore
+README.md
+audit/AUDIT_REPORT.md
+audit/PROGRESS.md
+audit/run_log.md
+audit/screenshots/aggregator_dashboard_1791027162067.png
+audit/screenshots/aggregator_scrolled_1791027210499.png
+audit/screenshots/checkout_dialog_1791026960900.png
+audit/screenshots/checkout_dialog_attempt_1791026984752.png
+audit/screenshots/checkout_dialog_open_1791027025701.png
+audit/screenshots/marketplace_layout_1791026939454.png
+audit/step2_api_transcript.md
+backend/Dockerfile
+backend/alembic.ini
+backend/alembic/README
+backend/alembic/env.py
+backend/alembic/script.py.mako
+backend/alembic/versions/4d6db76d758e_add_delivery_type_region_and_buffer_.py
+backend/alembic/versions/705181905fd8_initial_migration.py
+backend/app/__init__.py
+backend/app/api/deps.py
+backend/app/api/routes/auth.py
+backend/app/api/routes/credits.py
+backend/app/api/routes/farms.py
+backend/app/api/routes/marketplace.py
+backend/app/api/routes/transactions.py
+backend/app/core/config.py
+backend/app/core/limiter.py
+backend/app/core/security.py
+backend/app/db/base.py
+backend/app/db/base_class.py
+backend/app/db/session.py
+backend/app/main.py
+backend/app/models/buffer_ledger.py
+backend/app/models/credit_batch.py
+backend/app/models/farm.py
+backend/app/models/region.py
+backend/app/models/transaction.py
+backend/app/models/user.py
+backend/app/schemas/credit_batch.py
+backend/app/schemas/farm.py
+backend/app/schemas/transaction.py
+backend/app/schemas/user.py
+backend/app/services/escrow.py
+backend/app/services/geo.py
+backend/mypy.ini
+backend/requirements.txt
+backend/seed.py
+backend/tests/test_api.py
+docker-compose.yml
+frontend/.gitignore
+frontend/.oxlintrc.json
+frontend/Dockerfile
+frontend/README.md
+frontend/components.json
+frontend/index.html
+frontend/nginx.conf
+frontend/package-lock.json
+frontend/package.json
+frontend/postcss.config.js
+frontend/public/favicon.svg
+frontend/public/icons.svg
+frontend/src/App.tsx
+frontend/src/assets/hero.png
+frontend/src/assets/react.svg
+frontend/src/assets/vite.svg
+frontend/src/components/map/MapCanvas.tsx
+frontend/src/components/ui/avatar.tsx
+frontend/src/components/ui/badge.tsx
+frontend/src/components/ui/button.tsx
+frontend/src/components/ui/card.tsx
+frontend/src/components/ui/dialog.tsx
+frontend/src/components/ui/dropdown-menu.tsx
+frontend/src/components/ui/input.tsx
+frontend/src/components/ui/label.tsx
+frontend/src/components/ui/separator.tsx
+frontend/src/components/ui/sheet.tsx
+frontend/src/components/ui/sonner.tsx
+frontend/src/index.css
+frontend/src/lib/utils.ts
+frontend/src/main.tsx
+frontend/src/pages/AggregatorDashboard.tsx
+frontend/src/pages/BuyerMarketplace.tsx
+frontend/src/pages/Login.tsx
+frontend/src/store/authStore.ts
+frontend/tailwind.config.js
+frontend/tsconfig.app.json
+frontend/tsconfig.json
+frontend/tsconfig.node.json
+frontend/vite.config.ts
+verify_step2.py
+### untracked + ignored
+ M audit/PROGRESS.md
+ M backend/app/db/base.py
+ M frontend/src/pages/BuyerMarketplace.tsx
+?? audit/evidence/
+?? backend/verify_step9.py
+!! GROUNDWORK_EXPLANATION.md
+!! backend/.mypy_cache/
+!! backend/.pytest_cache/
+!! backend/.ruff_cache/
+!! backend/alembic/__pycache__/
+!! backend/alembic/versions/__pycache__/
+!! backend/app/__pycache__/
+!! backend/app/api/__pycache__/
+!! backend/app/api/routes/__pycache__/
+!! backend/app/core/__pycache__/
+!! backend/app/db/__pycache__/
+!! backend/app/models/__pycache__/
+!! backend/app/schemas/__pycache__/
+!! backend/app/services/__pycache__/
+!! backend/tests/__pycache__/
+!! frontend/dist/
+!! frontend/node_modules/
